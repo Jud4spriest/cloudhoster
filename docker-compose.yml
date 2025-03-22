@@ -1,0 +1,61 @@
+
+services:
+  cloudhoster:
+    build:
+      context: ./cloudhoster
+    container_name: cloudhoster
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+      - "25:25"
+      - "465:465"
+      - "587:587"
+      - "993:993"
+      - "995:995"
+      - "110:110"
+    volumes:
+      - ./cloudhoster/conf:/config
+      - ./cloudhoster/scripts/roundcube-init.sh:/config/roundcube-init.sh
+      - ./cloudhoster/scripts/start.sh:/start.sh
+    depends_on:
+      - mariadb
+    env_file:
+      - .env
+    networks:
+      - internal
+
+  # init-sql-generator:
+  #   image: alpine:latest
+  #   volumes:
+  #     - ./scripts:/scripts
+  #     - ./database:/out
+  #     - .env:/envfile
+  #   working_dir: /scripts
+  #   entrypoint: ["/bin/sh", "-c", "apk add --no-cache gettext && . /envfile && envsubst < /out/init.sql.template > /out/init.sql"]
+  #   env_file:
+  #     - .env
+  #   restart: "no"
+
+  mariadb:
+    image: mariadb:11.3
+    container_name: mariadb
+    restart: always
+    # depends_on:
+    #   - init-sql-generator
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./cloudhoster/conf/roundcube.conf:/etc/roundcube/config.inc.php
+    networks:
+      - internal
+
+volumes:
+  db_data:
+  cloudpanel_data:
+
+networks:
+  internal:
+    driver: bridge
