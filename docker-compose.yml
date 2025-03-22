@@ -15,6 +15,7 @@ services:
       - "995:995"
       - "110:110"
     volumes:
+      - wordpress_data:/var/www/html
       - ./cloudhoster/conf:/config
       - ./cloudhoster/scripts/roundcube-init.sh:/config/roundcube-init.sh
       - ./cloudhoster/scripts/start.sh:/start.sh
@@ -54,7 +55,7 @@ services:
 
 volumes:
   db_data:
-  cloudpanel_data:
+  wordpress_data:
 
 networks:
   internal:
