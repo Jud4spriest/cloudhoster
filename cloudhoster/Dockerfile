@@ -2,8 +2,6 @@ FROM debian:bookworm-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN useradd -m -u 1001 -s /bin/bash -G www-data appuser
-
 RUN apt-get update && apt-get install -y --no-install-recommends \
  nginx \
  php-fpm \
@@ -27,14 +25,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sSL https://wordpress.org/latest.tar.gz | tar -xz -C /var/www/html --strip-components=1 && \
-chown -R appuser:www-data /var/www/html
+chown -R www-data:www-data /var/www/html
 
-# Config safe dirs and permissions for appuser 
+# Config safe dirs and permissions for www-data 
 RUN mkdir -p /var/www/html /run /var/lib/php /var/lib/nginx /var/log/nginx  && \
-    chown -R appuser:www-data /var/www/html /run /var/lib/php /var/lib/nginx /var/log/nginx && \
+    chown -R www-data:www-data /var/www/html /run /var/lib/php /var/lib/nginx /var/log/nginx && \
     chmod -R 755 /var/www/html /run /var/lib/php /var/lib/nginx /var/log/nginx
 # cache dir for nginx (if VM's nginx not controlling traffic cache)
-RUN mkdir -p /var/cache/nginx && chown appuser:www-data /var/cache/nginx
+RUN mkdir -p /var/cache/nginx && chown www-data:www-data /var/cache/nginx
 
 # apply php optimizations
 RUN PHP_VERSION=$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;") && \
@@ -49,13 +47,12 @@ COPY conf/vsftpd.conf /etc/vsftpd.conf
 COPY conf/postfix.conf /etc/postfix/main.cf
 COPY conf/dovecot.conf /etc/dovecot/dovecot.conf
 COPY conf/roundcube.conf /etc/roundcube/config.inc.php
-COPY scripts/start.sh /start.sh
-RUN chmod 755 /start.sh && chown root:root /start.sh
+#COPY scripts/roundcube-init.sh /roundcube-init.sh
+#COPY scripts/start.sh /start.sh
 
 EXPOSE 80 443 465 587 993 995 21 30000-30100
 
-USER root
-
 WORKDIR /var/www/html
 
-ENTRYPOINT ["/start.sh"]
+#ENTRYPOINT ["/start.sh"]
+#CMD ["tail", "-f", "/dev/null"]
