@@ -115,9 +115,9 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 
 ## 💡 Melhorias futuras
 
-* 🔧 Build opcional leve sem WordPress e serviços de e-mail, focado em footprint mínimo do container.
+* 🔧 Build opcional sem WordPress e serviços de e-mail, focado em footprint mínimo do container.
 * 🏗️ Imagem alternativa baseada em Alpine para reduzir o tamanho do sistema operacional e o uso de memória.
-* 🛠️ Scripts de diagnóstico e verificação de bugs para checagens automatizadas de integridade e análise de logs.
+* 🛠️ Aprimoramento dos scripts de diagnóstico e verificação de bugs para checagens automatizadas de integridade e análise de logs.
 * 🖥️ Painel de controle frontend leve para gerenciamento dos serviços e configurações.
 * 🔄 Substituição opcional do MariaDB por MongoDB, voltado para casos de uso com banco de dados NoSQL.
 
