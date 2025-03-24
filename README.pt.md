@@ -100,6 +100,7 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 1️⃣ Clone o repositório
 
 > git clone https://github.com/seu-usuario/CloudHoster.git
+> 
 > cd CloudHoster
 
 2️⃣ Configure o arquivo .env com credenciais, nomes de bancos e domínio
