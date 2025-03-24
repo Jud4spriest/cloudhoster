@@ -2,7 +2,9 @@
 
 # CloudHoster 🚀
 
-O CloudHoster é um servidor containerizado ultraleve, altamente otimizado e projetado para rodar de forma eficiente em instâncias EC2 da AWS (ou outras plataformas cloud) mesmo com recursos de hardware extremamente limitados. Desenvolvido para hospedar aplicações web frontend/backend com máxima eficiência, cada componente do CloudHoster foi cuidadosamente ajustado para minimizar o uso de memória, CPU e disco, garantindo escalabilidade com o menor consumo possível. A solução combina Docker, automação e boas práticas de infraestrutura para entregar performance, segurança e estabilidade com foco em economia de recursos.
+O CloudHoster é um servidor containerizado ultraleve, altamente otimizado e projetado para rodar de forma eficiente em instâncias EC2 da AWS (ou outras plataformas cloud) mesmo com recursos de hardware extremamente limitados. Desenvolvido para hospedar aplicações web frontend/backend com máxima eficiência, cada componente do CloudHoster foi cuidadosamente ajustado para minimizar o uso de memória, CPU e disco, garantindo escalabilidade com o menor consumo possível. 
+
+A solução combina Docker, automação e boas práticas de infraestrutura para entregar performance, segurança e estabilidade com foco em economia de recursos.
 
 ---
 
@@ -23,9 +25,9 @@ O CloudHoster é um servidor containerizado ultraleve, altamente otimizado e pro
 
 ---
 
-## Arquitetura
+## 🛠️ Arquitetura
 
-### 🧩 1. Container - CloudHoster
+### 🧬 1. Container - CloudHoster
 O container é baseado em Debian 12 Slim, com um ambiente leve e robusto.
 
 <img src="https://github.com/user-attachments/assets/eedd5ac5-2193-4498-9c1f-6a3169ae7497" alt="cloudhoster_container" width="400"/>
@@ -39,7 +41,7 @@ O container é baseado em Debian 12 Slim, com um ambiente leve e robusto.
 * vsftpd configurado com SSL e isolamento de usuários.
 * MariaDB-client apenas para comunicação com o banco remoto/container.
 
-### 🏗️ 2. Arquitetura do Sistema - CloudHoster na AWS
+### 🏠 2. Arquitetura do Sistema - CloudHoster na AWS
 A arquitetura de produção prioriza segurança, modularidade e escalabilidade. Abaixo, o fluxo principal baseado na imagem:
 
 
@@ -76,7 +78,7 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 
 ## 🚀 Como Usar
 
-## 📁 Estrutura do Projeto
+### 📁 Estrutura do Projeto
 
 ```bash
 .
@@ -110,22 +112,25 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 > O Nginx realiza cache de páginas estáticas, compressão e controle de headers para reduzir latência e consumo de banda.
 
 
-## 💡 Melhorias futuras
-- Remoção do wordpress e serviços adicionais para tornar o container mais leve somente com o essencial.
-- Imagem opcional baseada no Alpine.
-- Implementação de scripts de verificação de bugs e logs.
-- Painel de controle frontend leve.
-- Alteração do mariadb por mongodb.
+### 💡 Melhorias futuras
+
+* 🔧 Build opcional leve sem WordPress e serviços de e-mail, focado em footprint mínimo do container.
+* 🏗️ Imagem alternativa baseada em Alpine para reduzir o tamanho do sistema operacional e o uso de memória.
+* 🛠️ Scripts de diagnóstico e verificação de bugs para checagens automatizadas de integridade e análise de logs.
+* 🖥️ Painel de controle frontend leve para gerenciamento dos serviços e configurações.
+* 🔄 Substituição opcional do MariaDB por MongoDB, voltado para casos de uso com banco de dados NoSQL.
 
 ---
-## 🧪 Status
-> ✅ Functional MVP tested with:
+
+### 🧪 Status
+> ✅ MVP funcional e testado:
 > - AWS EC2 1GB t2.micro
 > - Docker Engine v24+
 > - Debian Bookworm/Ubuntu 22.04 base
+
 ---
 
-## 📄 License
+## 📄 Licença
 MIT. Free for commercial and private use. Contributions welcome!
 
 ## 👋 Author
