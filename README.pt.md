@@ -112,7 +112,7 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 > O Nginx realiza cache de páginas estáticas, compressão e controle de headers para reduzir latência e consumo de banda.
 
 
-### 💡 Melhorias futuras
+## 💡 Melhorias futuras
 
 * 🔧 Build opcional leve sem WordPress e serviços de e-mail, focado em footprint mínimo do container.
 * 🏗️ Imagem alternativa baseada em Alpine para reduzir o tamanho do sistema operacional e o uso de memória.
@@ -122,7 +122,8 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 
 ---
 
-### 🧪 Status
+## 🧪 Status
+
 > ✅ MVP funcional e testado:
 > - AWS EC2 1GB t2.micro
 > - Docker Engine v24+
@@ -131,7 +132,11 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 ---
 
 ## 📄 Licença
-MIT. Free for commercial and private use. Contributions welcome!
 
-## 👋 Author
-Developed by Marcos Azevedo — built to be simple, lean and professional.
+Este projeto está licenciado sob os termos descritos no arquivo [LICENSE.md](!https://github.com/Jud4spriest/cloudhoster/blob/main/LICENSE.md)
+
+Para uso comercial envolvendo versões modificadas, leia as condições adicionais no arquivo de licença.
+
+## 👋 Autor
+
+Desenvolvido por Marcos Azevedo — Construído para ser simples, leve e profissional.
