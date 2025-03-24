@@ -133,7 +133,7 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 
 ## 📄 Licença
 
-Este projeto está licenciado sob os termos descritos no arquivo [LICENSE.md](!https://github.com/Jud4spriest/cloudhoster/blob/main/LICENSE.md)
+Este projeto está licenciado sob os termos descritos no arquivo [LICENSE.md](https://github.com/Jud4spriest/cloudhoster/blob/main/LICENSE.md)
 
 Para uso comercial envolvendo versões modificadas, leia as condições adicionais no arquivo de licença.
 
