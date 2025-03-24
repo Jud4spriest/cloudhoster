@@ -127,7 +127,10 @@ The production architecture prioritizes security, modularity, and scalability. B
 ---
 
 ## 📄 License
-MIT. Free for commercial and private use. Contributions welcome!
+
+This project is licensed under the terms described in the LICENSE.md(!LICENSE.md) file.
+
+For commercial usage involving modified versions, please read the additional conditions in the license file.
 
 ## 👋 Author
 Developed by Marcos Azevedo — built to be simple, lean and professional.
