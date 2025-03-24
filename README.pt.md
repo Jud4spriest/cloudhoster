@@ -1,3 +1,5 @@
+📘 Available languages: [🇬🇧 English](README.md) | [🇧🇷 Português](README.pt.md)
+
 # CloudHoster 🚀
 
 O CloudHoster é um servidor containerizado ultraleve, altamente otimizado e projetado para rodar de forma eficiente em instâncias EC2 da AWS (ou outras plataformas cloud) mesmo com recursos de hardware extremamente limitados. Desenvolvido para hospedar aplicações web frontend/backend com máxima eficiência, cada componente do CloudHoster foi cuidadosamente ajustado para minimizar o uso de memória, CPU e disco, garantindo escalabilidade com o menor consumo possível. A solução combina Docker, automação e boas práticas de infraestrutura para entregar performance, segurança e estabilidade com foco em economia de recursos.
@@ -73,6 +75,26 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 ---
 
 ## 🚀 Como Usar
+
+## 📁 Estrutura do Projeto
+
+```bash
+.
+├── cloudhoster/              # Core hosting stack
+│   ├── conf/                 # Service configurations (Nginx, PHP, etc)
+│   ├── scripts/              # Init/start scripts
+│   └── Dockerfile            # CloudHoster image
+├── database/                 # MariaDB Dockerfile and data volume
+├── scripts/                  # Core hosting stack
+│   ├── docker-monitor.sh     # log and monitoring hardware resources.
+│   ├── verification_db.sh    # verification script for mariadb.
+├── docker-compose.yml        # Single entrypoint for full stack
+├── .env                      # Centralized environment variables
+├── run.sh                    # startup system script.
+└── README.md
+```
+
+
 1️⃣ Clone o repositório
 
 > git clone https://github.com/seu-usuario/CloudHoster.git
@@ -88,4 +110,23 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 > O Nginx realiza cache de páginas estáticas, compressão e controle de headers para reduzir latência e consumo de banda.
 
 
-CloudHoster é ideal para quem deseja hospedar múltiplos sites com o máximo de eficiência, autonomia e controle. Indicado para freelancers, agências, devs ou startups que valorizam performance, segurança e baixo custo.
+## 💡 Melhorias futuras
+- Remoção do wordpress e serviços adicionais para tornar o container mais leve somente com o essencial.
+- Imagem opcional baseada no Alpine.
+- Implementação de scripts de verificação de bugs e logs.
+- Painel de controle frontend leve.
+- Alteração do mariadb por mongodb.
+
+---
+## 🧪 Status
+> ✅ Functional MVP tested with:
+> - AWS EC2 1GB t2.micro
+> - Docker Engine v24+
+> - Debian Bookworm/Ubuntu 22.04 base
+---
+
+## 📄 License
+MIT. Free for commercial and private use. Contributions welcome!
+
+## 👋 Author
+Developed by Marcos Azevedo — built to be simple, lean and professional.
