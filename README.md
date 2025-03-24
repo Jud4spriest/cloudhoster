@@ -75,7 +75,7 @@ The production architecture prioritizes security, modularity, and scalability. B
 
 ## 🚀 How to Use
 
-## 📁 Project Structure
+### 📁 Project Structure
 
 ```bash
 .
