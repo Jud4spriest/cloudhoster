@@ -20,11 +20,12 @@ until mysqladmin ping -h mariadb --silent; do
 done
 echo "MariaDB is up! Starting services..."
 
+echo "running roundcube settings ..."
 bash /config/roundcube-init.sh
-echo "initializing php-fpm ..."
-/usr/sbin/php-fpm8.2 -D
-echo "php-fpm initialized!"
+echo "running php-fpm ..."
+bash /config/php-fpm-init.sh
 
+echo "running nginx ..."
 sudo -u www-data /usr/sbin/vsftpd &
 sudo -u www-data /usr/sbin/nginx -g "daemon off;"
 

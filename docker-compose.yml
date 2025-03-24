@@ -22,6 +22,7 @@ services:
       - wordpress_data:/var/www/html
       - ./cloudhoster/conf:/config
       - ./cloudhoster/scripts/roundcube-init.sh:/config/roundcube-init.sh
+      - ./cloudhoster/scripts/php-fpm-init.sh:/config/php-fpm-init.sh
       - ./cloudhoster/scripts/start.sh:/start.sh
     entrypoint: ["/start.sh"]
     networks:
