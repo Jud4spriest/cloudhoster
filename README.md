@@ -97,6 +97,7 @@ The production architecture prioritizes security, modularity, and scalability. B
 1️⃣ Clone the repository:
 
 > git clone https://github.com/seu-usuario/CloudHoster.git
+> 
 > cd CloudHoster
 
 2️⃣ Configure the .env file with credentials, database names, and domains.
