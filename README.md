@@ -2,81 +2,80 @@
 
 # CloudHoster 🚀
 
-O CloudHoster é um servidor containerizado ultraleve, altamente otimizado e projetado para rodar de forma eficiente em instâncias EC2 da AWS (ou outras plataformas cloud) mesmo com recursos de hardware extremamente limitados. Desenvolvido para hospedar aplicações web frontend/backend com máxima eficiência, cada componente do CloudHoster foi cuidadosamente ajustado para minimizar o uso de memória, CPU e disco, garantindo escalabilidade com o menor consumo possível. A solução combina Docker, automação e boas práticas de infraestrutura para entregar performance, segurança e estabilidade com foco em economia de recursos.
+CloudHoster is an ultra-lightweight, highly optimized containerized server designed to run efficiently on AWS EC2 instances (or other cloud platforms) with extremely limited hardware resources. Built to host frontend/backend web applications with maximum efficiency, each component of CloudHoster is carefully tuned to minimize memory, CPU, and disk usage, ensuring scalability with minimal consumption.
+
+The solution combines Docker, automation, and infrastructure best practices to deliver performance, security, and stability with a strong focus on resource optimization.
 
 ---
 
-## 📌 Principais Recursos
+## 📌 Key Features
 
-✅ Servidor Web Nginx + PHP-FPM configurado com cache, compressão Gzip, HTTP/2 e FastCGI para desempenho superior.
+✅ Nginx + PHP-FPM Web Server configured with caching, Gzip compression, HTTP/2, and FastCGI for superior performance.
 
-✅ Postfix (SMTP) + Dovecot (IMAP/POP3) + Roundcube (Webmail) para serviços de e-mail seguros e acessíveis.
+✅ Postfix (SMTP) + Dovecot (IMAP/POP3) + Roundcube (Webmail) for secure and accessible email services.
 
-✅ FTP Seguro (vsftpd) para upload e gerenciamento de arquivos.
+✅ Secure FTP (vsftpd) for file upload and management.
 
-✅ WordPress otimizado para consumo mínimo, com cache de página, opcache e desativação de funcionalidades desnecessárias por script.
+✅ Optimized WordPress, with minimal footprint, page caching, opcache, and script-based deactivation of unnecessary features.
 
-✅ MariaDB executando em container separado para isolação, segurança e melhor desempenho.
+✅ MariaDB running in a separate container for better isolation, security, and performance.
 
-✅ Serviços isolados via Docker, garantindo encapsulamento e segurança operacional.
+✅ Services isolated via Docker, ensuring encapsulation and operational security.
 
 
 ---
 
-## Arquitetura
+## 🛠️ Architecture
 
-### 🧩 1. Container - CloudHoster
-O container é baseado em Debian 12 Slim, com um ambiente leve e robusto.
+### 🧬 1. CloudHoster Container
+The container is based on Debian 12 Slim, providing a lightweight yet robust environment. It includes:
 
 <img src="https://github.com/user-attachments/assets/eedd5ac5-2193-4498-9c1f-6a3169ae7497" alt="cloudhoster_container" width="400"/>
 
 
-**Ele inclui**:
+**It includes**:
 
-* Nginx + PHP-FPM com configurações finas para minimizar uso de workers, limitar conexões e ativar cache dinâmico.
-* WordPress com instalação minimalista, plugins otimizados e arquivos cacheados.
-* Postfix, Dovecot, Roundcube totalmente integrados e configurados para criptografia (TLS), autenticação segura e log rotativo.
-* vsftpd configurado com SSL e isolamento de usuários.
-* MariaDB-client apenas para comunicação com o banco remoto/container.
+* Nginx + PHP-FPM finely configured to reduce worker usage, limit connections, and enable dynamic caching.
+* Minimal WordPress installation with optimized plugins and cached files.
+* Postfix, Dovecot, Roundcube fully integrated and configured for TLS encryption, secure authentication, and rotating logs.
+* vsftpd with SSL and user isolation.
+* MariaDB-client for communication with the remote/database container.
 
-### 🏗️ 2. Arquitetura do Sistema - CloudHoster na AWS
-A arquitetura de produção prioriza segurança, modularidade e escalabilidade. Abaixo, o fluxo principal baseado na imagem:
-
+### 🏠 2. System Architecture - CloudHoster on AWS
+The production architecture prioritizes security, modularity, and scalability. Below is the main flow based on the image:
 
 <img src="https://github.com/user-attachments/assets/99ee7b10-b10e-4dfe-95f2-decd906145f8" alt="cloudhoster_architecture" width="600"/>
 
+* EC2 Instance (Amazon Linux or Debian) with Docker and Docker Compose.
+* CloudHoster Containers: one or more instances for hosting different sites.
+* MariaDB Container: isolated database with automated backup.
+* Nginx (reverse proxy): domain routing, static page caching, and SSL termination.
+* UFW + ModSecurity + Fail2Ban: internal security layer against attacks.
+* Certbot (Let's Encrypt): automatic issuance and renewal of SSL certificates.
 
-* EC2 Instance (Amazon Linux ou Debian) com Docker e Docker Compose.
-* CloudHoster Containers: 1 ou mais instâncias para sites diferentes.
-* MariaDB Container: banco de dados isolado, com backup automatizado.
-* Nginx (reverse proxy): roteamento de domínios, cache de páginas estáticas e SSL.
-* UFW + ModSecurity + Fail2Ban: camada de segurança interna contra ataques.
-* Certbot (Let's Encrypt): emissão e renovação automática de certificados.
+🌐 Network Layer
 
-🌐 Camada de Rede
+* Amazon VPC + Security Groups: traffic filtering and control.
+* Cloudflare: CDN, caching, flexible SSL, and DDoS protection.
+* Locaweb DNS: domain pointing to Cloudflare.
 
-* Amazon VPC + Security Groups: filtragem e controle de tráfego.
-* Cloudflare: CDN, cache, SSL flexível, proteção DDoS.
-* Locaweb DNS: apontamento de domínio para Cloudflare.
-
-  
 ---
 
-## 📦 Tecnologias Utilizadas
+## 📦 Technologies Used
 
 * AWS EC2 + EBS
 * Docker + Docker Compose
 * Nginx + PHP-FPM
-* WordPress (otimizado)
+* Optimized WordPress
 * MariaDB
 * Postfix + Dovecot + Roundcube
 * UFW, Fail2Ban, Certbot, ModSecurity
 
 ---
 
-## 🚀 Como Usar
+## 🚀 How to Use
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```bash
 .
@@ -95,26 +94,29 @@ A arquitetura de produção prioriza segurança, modularidade e escalabilidade. 
 ```
 
 
-1️⃣ Clone o repositório
+1️⃣ Clone the repository:
 
 > git clone https://github.com/seu-usuario/CloudHoster.git
 > cd CloudHoster
 
-2️⃣ Configure o arquivo .env com credenciais, nomes de bancos e domínio
+2️⃣ Configure the .env file with credentials, database names, and domains.
 
-3️⃣ Rode o script run.sh. Ele:
-* Gera o init.sql com as estruturas do banco.
-* Sobe o docker-compose com os containers.
-* Aplica configurações de rede e ambiente.
+3️⃣ Run the run.sh script. It:
 
-> O Nginx realiza cache de páginas estáticas, compressão e controle de headers para reduzir latência e consumo de banda.
+* Generates init.sql with database structure.
+* Starts Docker Compose with all containers.
+* Applies network and environment settings.
+
+> Nginx performs static page caching, compression, and header control to reduce latency and bandwidth consumption.
 
 
 ## 💡 Future Improvements
-- Traefik integration
-- Auto domain provisioning
-- Centralized log management
-- Optional Alpine-based images for footprint reduction
+
+* 🔧 Optional lightweight build without WordPress and mail services for minimal container footprint.
+* 🏗️ Alternative Alpine-based image to reduce base OS size and memory usage.
+* 🛠️ Diagnostic and bug-check scripts for automated health checks and log analysis.
+* 🖥️ Lightweight frontend control panel to manage services and configurations.
+* 🔄 Replace MariaDB with MongoDB (optional build) for NoSQL-based use cases.
 
 ---
 ## 🧪 Status
