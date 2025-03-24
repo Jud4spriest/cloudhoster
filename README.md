@@ -128,7 +128,7 @@ The production architecture prioritizes security, modularity, and scalability. B
 
 ## 📄 License
 
-This project is licensed under the terms described in the LICENSE.md(!LICENSE.md) file.
+This project is licensed under the terms described in the [LICENSE.md](https://github.com/Jud4spriest/cloudhoster/blob/main/LICENSE.md) file.
 
 For commercial usage involving modified versions, please read the additional conditions in the license file.
 
