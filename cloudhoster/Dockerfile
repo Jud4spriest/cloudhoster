@@ -43,6 +43,8 @@ COPY conf/vsftpd.conf /etc/vsftpd.conf
 COPY conf/postfix.conf /etc/postfix/main.cf
 COPY conf/dovecot.conf /etc/dovecot/dovecot.conf
 COPY conf/roundcube.conf /etc/roundcube/config.inc.php
+COPY conf/www.conf /etc/php/8.2/fpm/pool.d/www.conf
+COPY conf/php.ini /etc/php/8.2/fpm/php.ini
 COPY php-fpm-test /var/www/html/wp-content/uploads/testes/
 
 EXPOSE 80 443 465 587 993 995 21 30000-30100

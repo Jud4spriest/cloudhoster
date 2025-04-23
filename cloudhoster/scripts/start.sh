@@ -13,6 +13,7 @@ fi
 echo "Fixing container's user permissions..."
 chown -R www-data:www-data /var/www/html
 chmod -R 750 /var/www/html
+#chmod 0666 /run/php/php8.2-fpm.sock
 
 echo "Waiting for MariaDB to be ready..."
 until mysqladmin ping -h mariadb --silent; do
